@@ -2,8 +2,8 @@
 define print_list
     set $t_list = $arg0
     while ($t_list != 0)
-        printf "Node: %p, Data: %d, Next: %p\n", $t_list, ((struct Node*)$t_list)->data, ((struct Node*)$t_list)->next
-        set $t_list = ((struct Node*)$t_list)->next
+        printf "Node: %p, Data: %d, Next: %p\n", $t_list, ((t_list*)$t_list)->content, ((t_list*)$t_list)->next
+        set $t_list = ((t_list*)$t_list)->next
     end
 end
 
@@ -28,7 +28,7 @@ define print_nth_node
         set $i = $i + 1
     end
     if ($t_list != 0)
-        printf "Node[%d]: %p, Data: %d, Next: %p\n", $n, $t_list, ((struct Node*)$t_list)->data, ((struct Node*)$t_list)->next
+        printf "Node[%d]: %p, Data: %d, Next: %p\n", $n, $t_list, ((struct Node*)$t_list)->content, ((struct Node*)$t_list)->next
     else
         printf "Error: Index %d out of bounds\n", $n
     end
@@ -44,7 +44,7 @@ define print_last_node
     while (((struct Node*)$t_list)->next != 0)
         set $t_list = ((struct Node*)$t_list)->next
     end
-    printf "Last Node: %p, Data: %d, Next: %p\n", $t_list, ((struct Node*)$t_list)->data, ((struct Node*)$t_list)->next
+    printf "Last Node: %p, Data: %d, Next: %p\n", $t_list, ((struct Node*)$t_list)->content, ((struct Node*)$t_list)->next
 end
 
 # Function to check if a linked list is cyclic (detect loops)
